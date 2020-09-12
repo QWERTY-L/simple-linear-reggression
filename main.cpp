@@ -25,6 +25,7 @@ std::tuple<double, double> gd(int batches, int samples, double *x, double *yh, d
         //calculate derivative (With MSE loss):
         //-dw = 2 * x * (yh - yp)
         //-db = 2 * (yh - yp)
+        dw = 0;
         for(int j=0; j<samples; j++){
 
             dw += 2 * x[j] * (yh[j] - (x[j] * w + b)); //The last part (x * w + b) is the main function
@@ -141,6 +142,14 @@ int main()
 
                 }
                 printList(yh, samples);
+
+            }
+
+            if(r == "samples"){
+
+                cout << endl << "Enter number of samples: " << endl << ">>> ";
+                cin >> samples;
+                cout << endl << "There are now " << samples << " samples." << endl << "WARNING, MAKE SURE TO CHANGE 'x' AND 'y' USING 'edit x' and 'edit y'";
 
             }
 
