@@ -68,7 +68,7 @@ int main()
     cout << endl << endl << "^\nY:";
     printList(yh, samples);
 
-    std::tuple<int, int> vals;
+    std::tuple<double, double> vals;
     vals = gd(batches, samples, x, yh, a, w, b, dw, db);
     w = std::get<0>(vals);
     b = std::get<1>(vals);
@@ -92,7 +92,7 @@ int main()
         if(s1 == "btrain"){
 
             batches = stoi(r);
-            std::tuple<int, int> vals;
+            std::tuple<double, double> vals;
             vals = gd(batches, samples, x, yh, a, w, b, dw, db);
             w = std::get<0>(vals);
             b = std::get<1>(vals);
@@ -101,7 +101,93 @@ int main()
 
         if(s1 == "eval"){
 
-            cout << w * stoi(r) + b;
+            cout << (w * stoi(r) + b);
+
+        }
+
+        if(s1 == "edit"){
+
+            if(r[0] == '-' && r[1] == 'i'){
+
+                //edit single index: todo
+                cout << "you typed 'edit -i'";
+
+            }
+            //int rplit = r.find(" ");
+            //string r1 = r.substr(0, rplit);
+            //string r2 = r.substr(rplit);
+            if(r == "x"){
+
+                double bar;
+                for(int foo = 0; foo<samples; foo++){
+
+                    cout << endl << "Enter Number " << (foo + 1) << endl << ">>> ";
+                    cin >> bar;
+                    x[foo] = bar;
+
+                }
+                printList(x, samples);
+
+            }
+
+            if(r == "y"){
+
+                double bar;
+                for(int foo = 0; foo<samples; foo++){
+
+                    cout << endl << "Enter Number " << (foo + 1) << endl << ">>> ";
+                    cin >> bar;
+                    yh[foo] = bar;
+
+                }
+                printList(yh, samples);
+
+            }
+
+        }
+
+        if(s1 == "print"){
+        cout.precision(10);
+
+            if(r == "x"){
+
+                cout << "x:";
+                printList(x, samples);
+
+            }
+
+            if(r == "y"){
+
+                cout << "y:";
+                printList(yh, samples);
+
+            }
+
+            if(r == "w"){
+
+                cout << "w:" << endl << w;
+
+            }
+            if(r == "b"){
+
+                cout << "b:" << endl << b;
+
+            }
+            if(r == "dw"){
+
+                cout << "dw:" << endl << dw;
+
+            }
+            if(r == "db"){
+
+                cout << "db:" << endl << db;
+
+            }
+            if(r == "samples"){
+
+                cout << "samples:" << endl << samples;
+
+            }
 
         }
 
