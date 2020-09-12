@@ -1,6 +1,7 @@
 # simple-linear-reggression
 A very simple linear regression algorithm designed in c++
-Commands:
+
+## Commands
 
 - end: exit the program. Example: `end`
 - btrain (syntax: `btrain {int}`): trains the model for given amount of batches. Example: `btrain 4`
